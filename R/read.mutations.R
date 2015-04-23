@@ -4,6 +4,7 @@
 #' For these any header names will be ignored and the imported data.frame will have the columns chr, start, end, ref, and mut.
 #' If there are additonal columns specifying strand or sampleID these can be imported too either by name (if there is  a header) or number.
 #' other columns of data will be ignored.
+#' @importFrom magrittr "%>%"
 #' @param file a delimited file with columns containing at least "chr", "start.position", and "end.position" (a data.frame)
 #' @param the name of an optional strand column
 #' @param WT name of WT sequence column
