@@ -9,4 +9,4 @@ Author: Stephen Henderson <s.henderson@ucl.ac.uk>
 Maintainer: Stephen Henderson <s.henderson@ucl.ac.uk>
 Description: More about what it does (maybe more than one line)
 License: MIT
-Imports: dplyr, BSgenome
+Imports: dplyr, BSgenome, magrittr
