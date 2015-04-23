@@ -38,7 +38,7 @@ read.mutations <- function(file,  strand=strand, sampleID = sampleID, pos=1:5, s
     stop("The data has insufficient columns or was somehow corrupted on import. Check the data format and function options")
   }
   
-  # if strand or sampleID columns matchin the data were specified then add them
+  # if strand or sampleID columns matching the data were specified then add them
   if(any(colnames(tempDF) == strand))
     DF$strand <- tempDF[,strand]
   if(any(colnames(tempDF) == sampleID))
