@@ -7,7 +7,7 @@
 #' @keywords rainfall, mutants, kataegesis
 #' @examples
 #' # a minimal example
-#' DF<-read.mutations(file="1317049.tsv", chr="Chromosome", start.position="Genome.start", end.position="Genome.stop")
+#' DF<-read.mutations(file="1317049.tsv.gz", chr="Chromosome", start.position="Genome.start", end.position="Genome.stop")
 #' renewal.plot(DF)
 
 renewalPlot<-function(DF)
