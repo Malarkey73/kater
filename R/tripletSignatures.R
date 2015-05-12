@@ -1,5 +1,5 @@
 #' Create a table of types of point mutation
-#' A type of point mutation is TAA> TGA (triplet = "TGA", mutation ="A" )
+#' A type of point mutation is TAA > TGA (triplet = "TGA", mutation ="A" )
 #' @param triplets E.g. TCG, ACT, AAA etc. These might be recovered using the expandSeq function on a DF file.
 #' @param mutations The mutation at the centre of the triplet e.g. TCG > TGG is mutation G
 #' @keywords Poisson, mutants, kataegesis
@@ -17,7 +17,7 @@ tripletSignatures= function(DF)
   all.triplets <- paste0(rep(all.mutations, times=16), rep(all.mutations, each=4), rep(all.mutations, each=16))
   
   # This is awkward but I need to make a table of all possible mutation types and merge with the actual mutation table
-  # remember a mutation canot be AAA>A or CTT>T - so these are removed now.
+  # remember a mutation canot be AAA > A or CTT > T - so these are removed now.
   mutation.allposs <- dplyr::as.tbl(data.frame(expandref=rep(all.triplets,each=4), mut=all.mutations)) %>%
     dplyr::filter(substr(expandref,2,2) != mut) %>%
     dplyr::arrange(expandref, mut)
@@ -32,8 +32,8 @@ tripletSignatures= function(DF)
   mutation.join = dplyr::left_join(mutation.allposs, mutation.actual) %>%
     dplyr::mutate(count = ifelse(is.na(count), 0, count))
   
-  # each mutation has a single reverse complement which is identical from a molecular biol. viewpoint
-  # so really there are 96 unique point mutation NOT 192
+  # each mutation has a single reverse complement which (with most types of suequencing)
+  # you cannot distinguish ... so really there are 96 unique point mutations NOT 192
   mutation.join <- mutation.join %>%
     dplyr::mutate(rctriplets = as.character(reverseComplement(DNAStringSet(expandref)))) %>%
     dplyr::mutate(rcmutations = as.character(reverseComplement(DNAStringSet(mut))))
