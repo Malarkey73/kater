@@ -58,7 +58,7 @@ rainfallPlot <- function(DF, chrN=1, lower, upper, colour=NULL, facets=NULL, sha
   if(bursts==TRUE)
   {
     library(bursts)
-    kl= kleinberg(kat$start,  s=s, gamma=gamma)
+    kl= kleinberg(RF$start,  s=s, gamma=gamma)
     kl<- kl[kl$level>1,]
     QP <- QP + geom_segment(aes(x = start, xend = end, y=level, yend=level), colour= I(2), size=I(6), data=kl)
   }
