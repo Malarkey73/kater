@@ -13,12 +13,12 @@
 #' @examples
 #' ## before using the rainfall plot you might want to filter the VCF to contain mutations of a certain type.
 #' ## For instance this is filtering for APOBEC3A/B type point mutations
-#' DF <- filter(DF, (ref=="C" & mut=="T")|(ref=="C" & mut=="G")|(ref=="G" & mut=="A")|(ref=="G" & mut=="C"))
+#' DF <- dplyr::filter(DF, (ref=="C" & mut=="T")|(ref=="C" & mut=="G")|(ref=="G" & mut=="A")|(ref=="G" & mut=="C"))
 #' ## You might also add a column that can be used for shape or colour, e.g.
-#' DF <- mutate(DF, mutation_type = ifelse((ref=="C" & mut=="T")|(ref=="G" & mut=="A"), "transition", "transversion"))
+#' DF <- dplyr::mutate(DF, mutation_type = ifelse((ref=="C" & mut=="T")|(ref=="G" & mut=="A"), "C>T", "G>A"))
 #' ## Or guess  the strand of the mutation actual
-#' DF <- mutate(DF, strand = ifelse((ref=="C" & mut=="T")|(ref=="C" & mut=="G"), "positive", "negative"))
-#' rainfall(DF, chrN = 6, lower = 1.24e8, upper = 1.4e8, facets="strand", colour="mutation_type")
+#' DF <- dplyr::mutate(DF, strand = ifelse((ref=="C" & mut=="T")|(ref=="C" & mut=="G"), "positive", "negative"))
+#' rainfallPlot(DF, chrN = 6, lower = 1.24e8, upper = 1.4e8, facets="strand", colour="mutation_type")
 #'
 
 rainfallPlot <- function(DF, chrN=1, lower, upper, colour=NULL, facets=NULL, shape=NULL, bursts=F, s=3, gamma=3, vline=NULL, ...){
