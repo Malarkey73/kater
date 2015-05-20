@@ -10,13 +10,13 @@
 #' @param WT name of WT sequence column
 #' @param MUT name of Mutant sequence column
 #' @param the name of an optional sample ID column
-#' @param skip VCF or MAF files often have a few rows of comments that you will want to skip over (numeric, default=0).
+#' @param skip DF or MAF files often have a few rows of comments that you will want to skip over (numeric, default=0).
 #' @keywords rainfall, mutants, kataegesis
 #' @examples
 #' # A single example data file with multiple tumour samples comes with the package
 #' (exF <- system.file("extdata", "1317049.tsv.gz", package="kater"))  
 #' # a minimal example
-#' PD4107a <- read.mutations(file=gzfile(exF), sampleID = Sample.Name)
+#' DF <- read.mutations(file=gzfile(exF), sampleID = Sample.Name)
 
 read.mutations <- function(file,  strand=strand, sampleID = sampleID, pos=1:5, skip=0, header=T, ...){
   
