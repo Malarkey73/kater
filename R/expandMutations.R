@@ -16,13 +16,13 @@ expandMutations<- function(DF, expand=1, genome = BSgenome.Hsapiens.UCSC.hg19)
   #NSE
   genome=deparse(substitute(genome))
   
-  if(grep("UCSC", genome))
+  if(grepl("UCSC", genome))
     {
     # This is the format of the UCSC.hg19 data "chr19" NOT "19", "chrX" not "chr23"
       DF <- DF %>%
         dplyr::mutate(adj.chr = ifelse(chr %in% 1:24, yes=paste0("chr", chr), no=chr)) %>%
-        dplyr::mutate(adj.chr = ifelse(chr==23, yes="chrX", no=adj.chr)) %>%
-        dplyr::mutate(adj.chr = ifelse(chr==24, yes="chrY", no=adj.chr))
+        dplyr::mutate(adj.chr = ifelse(chr==23|chr=="X", yes="chrX", no=adj.chr)) %>%
+        dplyr::mutate(adj.chr = ifelse(chr==24|chr=="Y", yes="chrY", no=adj.chr))
         
     }
     else
