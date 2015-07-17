@@ -24,7 +24,7 @@ tripletSignatures= function(DF)
   
   # this is the actual mutation type counts
   mutation.actual <- DF %>%
-    dplyr::filter(nchar(mut)==1, nchar(expandref)==3) %>%
+    dplyr::filter(ref != "-", mut != "-", nchar(expandref)==3) %>%
     dplyr::group_by(expandref,mut) %>% 
     dplyr::summarise(count = n())
     
